@@ -19,6 +19,7 @@
     "javascript-brunch": ">= 1.0 < 1.5",
     "coffee-script-brunch": ">= 1.0 < 1.5",
 
+    "less-brunch": ">= 1.0 < 1.4",
     "css-brunch": ">= 1.0 < 1.5",
     "stylus-brunch": ">= 1.0 < 1.5",
 

@@ -1,3 +1,12 @@
-{{#each items}}
-  <a class="header-link" href="{{href}}">{{title}}</a>
-{{/each}}
+<div class="navbar-inner">
+	<a class="brand" href="#">WeakPoint!</a>
+	<div class="container">
+		<ul class="nav">
+			{{#each items}}
+				<li>
+					<a href="{{href}}">{{title}}</a>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>

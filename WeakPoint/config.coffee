@@ -11,19 +11,34 @@ exports.config =
         # Files in `vendor` directories are compiled before other files
         # even if they aren't specified in order.before.
         before: [
-          'vendor/scripts/console-helper.js',
-          'vendor/scripts/jquery-1.8.2.js',
-          'vendor/scripts/underscore-1.4.0.js',
+          'vendor/scripts/console-helper.js'
+          'vendor/scripts/jquery-1.8.2.js'
+          'vendor/scripts/underscore-1.4.0.js'
           'vendor/scripts/backbone-0.9.2.js'
+          #'vendor/scripts/backbone-mediator.js'
+
+          # Twitter Bootstrap jquery plugins
+          'vendor/scripts/bootstrap/bootstrap-transition.js'
+          'vendor/scripts/bootstrap/bootstrap-alert.js'
+          'vendor/scripts/bootstrap/bootstrap-button.js'
+          'vendor/scripts/bootstrap/bootstrap-carousel.js'
+          'vendor/scripts/bootstrap/bootstrap-collapse.js'
+          'vendor/scripts/bootstrap/bootstrap-dropdown.js'
+          'vendor/scripts/bootstrap/bootstrap-modal.js'
+          'vendor/scripts/bootstrap/bootstrap-tooltip.js'
+          'vendor/scripts/bootstrap/bootstrap-popover.js'
+          'vendor/scripts/bootstrap/bootstrap-scrollspy.js'
+          'vendor/scripts/bootstrap/bootstrap-tab.js'
+          'vendor/scripts/bootstrap/bootstrap-typeahed.js'
         ]
 
     stylesheets:
+      defaultExtension: 'less'
       joinTo:
         'stylesheets/app.css': /^(app|vendor)/
         'test/stylesheets/test.css': /^test/
       order:
-        before: ['vendor/styles/normalize-1.0.1.css']
-        after: ['vendor/styles/helpers.css']
+        before: [ 'vendor/styles/bootstrap/bootstrap.less' ]
 
     templates:
       joinTo: 'javascripts/app.js'
