@@ -42,3 +42,6 @@ exports.config =
 
     templates:
       joinTo: 'javascripts/app.js'
+
+  server:
+    path: 'server/server.coffee'

@@ -16,6 +16,8 @@
     "test": "brunch test"
   },
   "dependencies": {
+    "express": "~3.0.0rc4",
+
     "javascript-brunch": ">= 1.0 < 1.5",
     "coffee-script-brunch": ">= 1.0 < 1.5",
 
