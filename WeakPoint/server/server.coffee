@@ -3,7 +3,12 @@ sysPath = require 'path'
 _ = require 'underscore'
 
 class Bucket
-  collection: {{
+  collection: {}
+
+  constructor: ->
+    # temp
+    @collection.first = { title: 'First' }
+    @collection.second = { title: 'Second' }
 
   respond: (request, response) ->
     if request.params[0]
@@ -11,10 +16,8 @@ class Bucket
     else
       data = _.keys @collection
 
-    console.warn data
-
     if data
-      response.send data
+      response.send JSON.stringify data
     else
       response.send 404, 'Sorry, not found'
 

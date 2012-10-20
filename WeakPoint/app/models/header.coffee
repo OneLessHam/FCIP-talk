@@ -5,3 +5,4 @@ module.exports = class Header extends Model
     items: [
       {href: './test/', title: 'Unit Tests'},
     ]
+    topics: []

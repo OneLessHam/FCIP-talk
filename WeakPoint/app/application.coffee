@@ -7,9 +7,7 @@ Layout = require 'views/layout'
 
 # The application object
 module.exports = class Application extends Chaplin.Application
-  # Set your application name here so the document title is set to
-  # “Controller title – Site title” (see Layout#adjustTitle)
-  title: 'Brunch example application'
+  title: 'Weakpoint Presentation Framework'
 
   initialize: ->
     super
@@ -43,20 +41,13 @@ module.exports = class Application extends Chaplin.Application
   # Instantiate common controllers
   # ------------------------------
   initControllers: ->
-    # These controllers are active during the whole application runtime.
-    # You don’t need to instantiate all controllers here, only special
-    # controllers which do not to respond to routes. They may govern models
-    # and views which are needed the whole time, for example header, footer
-    # or navigation views.
-    # e.g. new NavigationController()
-    new SessionController()
     new HeaderController()
 
   # Create additional mediator properties
   # -------------------------------------
   initMediator: ->
-    # Create a user property
-    mediator.user = null
     # Add additional application-specific properties and methods
+    mediator.topics = null
+
     # Seal the mediator
     mediator.seal()
