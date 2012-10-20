@@ -46,10 +46,6 @@ module.exports = class TopicListPageView extends PageView
     content = textarea.val()
 
     try
-      # verify the content
-      CoffeeScript.compile content
-
-      # and save the topic
       topic.save { content },
         success: ->
           label = $ '<span class="label label-success pull-right">Saved!</span>'
