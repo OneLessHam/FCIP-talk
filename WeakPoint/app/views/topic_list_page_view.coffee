@@ -14,6 +14,8 @@ module.exports = class TopicListPageView extends PageView
   initialize: (options) ->
     super
 
+    @topics = mediator.topics
+
     @subscribeEvent 'topicsLoaded', =>
       @topics = mediator.topics
       @topics.on 'add', @render
