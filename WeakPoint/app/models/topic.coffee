@@ -5,4 +5,5 @@ module.exports = class Topic extends Model
 
   defaults:
     title: ''
+    content: "[\n  title: 'Page Title'\n]"
 

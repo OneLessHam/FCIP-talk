@@ -10,5 +10,10 @@ module.exports = class HeaderController extends Controller
     @view = new HeaderView({@model})
 
     @subscribeEvent 'topicsLoaded', =>
-      @model.set 'topics', mediator.topics.getTitles()
-      @view.render()
+      mediator.topics.on 'add', _.bind @_updateHeader, @
+      @_updateHeader()
+
+  _updateHeader: ->
+    @model.set 'topics', mediator.topics.getTitles()
+    @view.render()
+

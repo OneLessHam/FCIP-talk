@@ -5,11 +5,6 @@ _ = require 'underscore'
 class Bucket
   collection: {}
 
-  constructor: ->
-    # temp
-    @collection.first = { title: 'First' }
-    @collection.second = { title: 'Second' }
-
   respond: (request, response) ->
     if request.params[0]
       data = @collection[request.params]
@@ -28,12 +23,19 @@ exports.startServer = (port, path, callback) ->
     response.header 'Cache-Control', 'no-cache'
     next()
   server.use base, express.static path
+  server.use express.bodyParser()
 
   bucket = new Bucket
   server.all "#{base}/bucket/*", (request, response) ->
     switch request.route.method
       when 'get'
         bucket.respond request, response
+      when 'post'
+        key = request.params[0]
+        bucket.collection[key] = request.body
+        console.warn 'saved ' + key
+
+        response.send request.body
 
   server.all "#{base}/*", (request, response) ->
     response.sendfile sysPath.join path, 'index.html'
