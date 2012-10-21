@@ -6,7 +6,9 @@ mediator = require 'chaplin/mediator'
 module.exports = class HeaderController extends Controller
   initialize: ->
     super
-    @model = new Header()
+    @model = new Header
+      title: mediator.current?.get 'title'
+
     @view = new HeaderView({@model})
 
     @subscribeEvent 'topicsLoaded', =>

@@ -20,16 +20,26 @@ module.exports = class HomePageView extends PageView
         when 37 then @movePrevious()
         when 39 then @moveNext()
 
+    # grab the current page from the url if possible
+    match = Backbone.history.fragment.match /\?p=(\d+)/
+    if match
+      index = parseInt match[1]
+    else
+      index = 0
+
     @subscribeEvent 'selectTopic', =>
       @topic = mediator.current
-      @selectPage 0
+      @selectPage index
+
+    @topic = mediator.current
+    @selectPage index if @topic
 
   getTemplateData: ->
     if @topic
       data = _.clone @topic.pages[ @pageIndex ]
       if data.items
         data.items = _.collect data.items, (test) ->
-          test.replace /(http:\/\/[^\s]*)/, (link) ->
+          test.replace /(http:\/\/[^\s]*)/g, (link) ->
             "<a href='#{ link }'>#{ link }</a>"
       data
     else
@@ -42,7 +52,7 @@ module.exports = class HomePageView extends PageView
   moveNext: ->
     # expand the current page if needed
     list = @$ '.hero-unit ul'
-    if list.css('display') is 'none' and list.find('li').length
+    if list.css('display') is 'none' and list?.find('li').length
       @toggleExpand()
     else if @pageIndex < @topic?.pages.length - 1
       @selectPage @pageIndex + 1
@@ -63,6 +73,10 @@ module.exports = class HomePageView extends PageView
 
     (@$ 'li').removeClass 'active'
     (@$ ".selectPage[data-page=#{ @pageIndex }]").parent().addClass 'active'
+
+    # add current page to browser history
+    Backbone.history.navigate "/view/#{ @topic.get 'title' }?p=#{ @pageIndex }",
+      trigger: false
 
   toggleExpand: ->
     (@$ '.hero-unit ul').toggle()

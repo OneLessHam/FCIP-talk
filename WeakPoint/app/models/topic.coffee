@@ -5,7 +5,7 @@ module.exports = class Topic extends Model
 
   defaults:
     title: ''
-    content: "[\n  title: 'Page Title'\n]"
+    content: "[\n  title: 'Page Title'\n  details: ''\n  items: []\n]"
 
   validate: (options) ->
     @pages = eval CoffeeScript.compile 'return ' + options.content

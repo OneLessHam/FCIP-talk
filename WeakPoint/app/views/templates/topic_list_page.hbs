@@ -2,13 +2,14 @@
 	<h3>Here's what is available:</h3>
 	<div class="accordion">
 		{{#each topics}}
-			<div class="accordion-group">
+			<div class="accordion-group" data-title="{{ title }}">
 				<div class="accordion-heading">
-					<div class="accordion-toggle" data-toggle="collapse" data-target="#{{ this }}">
-						<strong class="topic-title">{{ this }}</strong>
+					<div class="accordion-toggle" data-toggle="collapse"
+							data-target="#{{ key }}">
+						<strong class="topic-title">{{ title }}</strong>
 					</div>
 				</div>
-				<div id="{{ this }}" class="accordion-body collapse">
+				<div id="{{ key }}" class="accordion-body collapse">
 					<div class="accordion-inner">
 					<textarea style="width: 100%" rows="20" />
 					</div>

@@ -32,19 +32,16 @@ module.exports = class TopicListPageView extends PageView
         topic.save()
 
   loadTopicContents: (ev) ->
-    title = ($ ev.target).closest('.accordion-toggle').data 'target'
-    textarea = ($ title).find 'textarea'
-    # the title starts with a hash
-    topic = @topics.get title.substring 1
-    if topic
-      textarea.val(topic.get 'content')
-        .data 'topic', topic
+    group = ($ ev.target).closest '.accordion-group'
+    topic = @topics.get group.data 'title'
+    group.find('textarea').val(topic.get 'content') if topic
 
   contentChanged: (ev) ->
     textarea = $ ev.target
-    topic = textarea.data 'topic'
     content = textarea.val()
 
+    title = textarea.closest('.accordion-group').data 'title'
+    topic = @topics.get title
     try
       topic.save { content },
         success: ->
@@ -68,5 +65,9 @@ module.exports = class TopicListPageView extends PageView
       , 3000
 
   getTemplateData: ->
-    topics: @topics?.getTitles()
+    key = 0
+    topics = _.collect @topics?.getTitles(), (title) ->
+        title: title
+        key: key++
+    { topics }
 

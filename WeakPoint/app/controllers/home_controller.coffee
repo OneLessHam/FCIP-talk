@@ -4,5 +4,6 @@ HomePageView = require 'views/home_page_view'
 module.exports = class HomeController extends Controller
   historyURL: 'home'
 
-  index: ->
+  index: (options) ->
+    @publishEvent 'selectTopic', decodeURIComponent options.title
     @view = new HomePageView()

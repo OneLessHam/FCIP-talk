@@ -9,6 +9,13 @@ module.exports = class AppController extends Controller
       mediator.topics = new TopicsCollection
       mediator.topics.fetch()
 
-    @subscribeEvent 'selectTopic', (title) ->
+      # load current topic if needed
+      @subscribeEvent 'topicsLoaded', =>
+        @publishEvent 'selectTopic', @_select if @_select
+
+    @subscribeEvent 'selectTopic', (title) =>
       mediator.current = mediator.topics.get title
+
+      # remember the selection if topics haven't loaded yet
+      @_select = title unless mediator.current
 

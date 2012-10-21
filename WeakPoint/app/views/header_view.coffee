@@ -15,7 +15,9 @@ module.exports = class HeaderView extends View
     super
 
     @subscribeEvent 'selectTopic', =>
-      (@$ '.currentTitle').text mediator.current?.get 'title'
+      @model.set 'title', mediator.current?.get 'title'
+      (@$ '.currentTitle').text @model.get 'title'
 
   selectTopic: (ev) ->
-    @publishEvent 'selectTopic', ($ ev.target).text()
+    Backbone.history.navigate "/view/#{ ($ ev.target).text() }"
+
