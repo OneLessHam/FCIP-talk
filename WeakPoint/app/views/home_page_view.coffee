@@ -40,7 +40,7 @@ module.exports = class HomePageView extends PageView
       if data.items
         data.items = _.collect data.items, (test) ->
           test.replace /(http:\/\/[^\s]*)/g, (link) ->
-            "<a href='#{ link }'>#{ link }</a>"
+            "<a href='#{ link }' target='_blank'>#{ link }</a>"
       data
     else
       title: 'Select a topic above'

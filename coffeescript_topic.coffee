@@ -45,7 +45,7 @@
   ]
 ,
   title: 'CoffeeScript in <n> minutes'
-  details: '<a href="http://coffeescript.org">Let\'s go...</a>'
+  details: '<a href="http://coffeescript.org" target="_blank">Let\'s go...</a>'
 ,
   title: 'The Environment'
   items: [
