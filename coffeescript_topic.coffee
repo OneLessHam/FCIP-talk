@@ -40,7 +40,7 @@
     'Node.js - http://nodejs.org'
     'CoffeeScript - http://coffeescript.org'
     'Brunch (Backbone, Chaplin, Underscore, and more!) - http://brunch.io'
-    'PhantomJS/Jasmine - http://phantomjs.org / http://pivotal.github.com/jasmine'
+    'Mocha - http://visionmedia.github.com/mocha'
     'Bootstrap - http://twitter.github.com/bootstrap'
   ]
 ,

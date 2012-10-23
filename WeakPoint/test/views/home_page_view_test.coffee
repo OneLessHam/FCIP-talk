@@ -8,4 +8,4 @@ describe 'HomePageView', ->
     @view.dispose()
 
   it 'should auto-render', ->
-    expect(@view.$el.find 'img').to.have.length 1
+    expect(@view.$el.find '.hero-unit').to.have.length 1

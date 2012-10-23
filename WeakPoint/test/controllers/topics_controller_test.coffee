@@ -1,5 +1,6 @@
-Topics = require 'controllers/topics'
+TopicsController = require 'controllers/topics_controller'
 
 describe 'Topics', ->
   beforeEach ->
-    @controller = new Topics()
+    @controller = new TopicsController()
+

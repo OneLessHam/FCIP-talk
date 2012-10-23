@@ -21,7 +21,7 @@ module.exports = class HomePageView extends PageView
         when 39 then @moveNext()
 
     # grab the current page from the url if possible
-    match = Backbone.history.fragment.match /\?p=(\d+)/
+    match = Backbone.history?.fragment.match /\?p=(\d+)/
     if match
       index = parseInt match[1]
     else

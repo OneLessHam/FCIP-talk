@@ -29,6 +29,7 @@
 ,
   title: 'Frameworks'
   items: [
+    'Mocha - http://visionmedia.github.com/mocha'
     'Jasmine - http://pivotal.github.com/jasmine'
     'QUnit - http://qunitjs.com'
     'Sinon.JS -http://sinonjs.org'
